@@ -1,0 +1,12 @@
+mongosh    //Open cell to write Command
+use Vishal
+db.createCollection(“Family_tree”)
+db.Family_tree.insertOne({})
+db.Family_tree.insertMany({},{},{})
+db.Famiy_tree.updateOne({name:”Vishal”},{$set:{salary:”50000”}})
+db.Famiy_tree.updateOne({},{$set:{salary:”50000”}})
+db.Famiy_tree.dalateOne({name:”Vishal”})
+db.Famiy_tree.find()
+db.Famiy_tree.findOne({name:”vishal”})
+db.Famiy_tree.countDocuments({})
+db.serverStatus()
