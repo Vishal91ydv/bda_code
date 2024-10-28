@@ -1,0 +1,73 @@
+matches=read.csv("C:/Users/student.RCOESRV/Downloads/matches.csv")
+
+#preprocessing the data
+#removing a null column
+matches<-subset(matches,select=-umpire3)
+print(head(matches))
+
+sapply(matches, class)
+
+matches$winner<-as.factor(matches$winner)
+print(matches$winner)
+
+# Check for null values
+sum(is.na(matches))
+
+# Remove rows with null values
+dropnull_matches <- matches[rowSums(is.na(matches)) <= 0,]
+
+#Visulaization:
+# Create a table of match results
+result_table <- table(dropnull_matches$result)
+lbls <- paste(names(result_table), result_table, sep="=")
+print(lbls)
+
+#creating Pie chart
+pie(result_table, 
+    labels = lbls, 
+    col = rainbow(length(result_table)),
+    main="Pie Chart of result types\n")
+
+legend("topright", 
+       legend = names(result_table), 
+       fill = rainbow(length(result_table)), 
+       title = "Match Results")
+
+# Create a table of wins by team
+win_counts <- table(dropnull_matches$winner)
+
+# Barplot of wins by team
+barplot(win_counts, 
+        main = "Number of Wins by Each Team in IPL", 
+        xlab = "Team", 
+        ylab = "Number of Wins", 
+        col = "lightblue", 
+        las = 2)  # las = 2 makes the axis labels perpendicular
+
+# Create a table of matches played at each venue
+venue_table <- table(dropnull_matches$venue)
+
+# Bar plot of matches played at each venue
+barplot(venue_table, 
+        las = 2, 
+        col = "lightgreen", 
+        main = "Number of Matches Played at Each Venue", 
+        xlab = "Venue", 
+        ylab = "Number of Matches")
+
+# Histogram of the year of matches
+hist(dropnull_matches$season, 
+     main = "Histogram of IPL Matches by Year", 
+     xlab = "Year", 
+     ylab = "Frequency", 
+     col = "lightcoral", 
+     breaks = seq(2008, 2020, by = 1),  # Adjust based on available years
+     xlim = c(2008, 2020))  # Adjust the limits based on your data
+
+# Create a dot plot for toss decisions by team
+dotchart(table(dropnull_matches$toss_decision, dropnull_matches$team1), 
+         main = "Dot Plot of Toss Decisions by Team",
+         xlab = "Frequency",
+         ylab = "Toss Decision",
+         pch = 19, 
+         col = "lightblue")
