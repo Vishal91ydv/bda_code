@@ -1,4 +1,4 @@
-matches=read.csv("C:/Users/student.RCOESRV/Downloads/matches.csv")
+matches=read.csv("C:/Users/student.RCOESRV/Downloads/ipl1.csv")
 
 #preprocessing the data
 #removing a null column
