@@ -1,0 +1,6 @@
+mongod -version
+mongosh 
+show dbs
+use Vishal
+db.createCollection(“Family_tree”)
+db.Family_tree.insertOne({})
