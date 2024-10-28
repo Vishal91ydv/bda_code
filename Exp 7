@@ -1,0 +1,30 @@
+print("*** Flajolet_Martin Algorithm ***\n")
+#Taking a stream as an input
+print("Enter input Stream:",end=" ")
+nums=list(map(int,input().split()))
+#Taking values of a,b,c for the formula of hash function: (ax+b) mod c
+a=int(input("Enter 'a' value for the hash:"))
+b=int(input("Enter 'b' value for the hash:"))
+c=int(input("Enter 'c' value for the hash:"))
+#Calculating hash values for each number in the stream
+hash=[(a*x+b)%c for x in nums]
+print("Hash Values for each values generated are:",hash)
+max_trail_zeroes=0
+#Function to convert number into its binary form and counting trailing zeroes
+def genBinary(num):
+  count=0
+  while(num!=0):
+    dig=num%2
+    if(dig==0):
+      count+=1
+    else:
+      break
+    num/=2
+  return count
+#Getting the maximum trailing zeroes
+for num in hash:
+  trail_zeroes=genBinary(num)
+  max_trail_zeroes=max(max_trail_zeroes,trail_zeroes)
+print(f"\nMaximum Trailing Zeroes are:{max_trail_zeroes}\n")
+#Finally printing the result which is 2^max_trail_zeroes
+print(f"No of Distinct element in a stream are: {2**max_trail_zeroes}")
