@@ -1,0 +1,16 @@
+–To setup Hadoop
+cd..    2 times
+cd hadoop-3.2.4
+cd sbin
+hdfs namenode - format
+start-all.cmd
+ –Execute some Cammands
+hdfs dfs -mkdir /sample
+hdfs dfs -mkdir /vishal
+hdfs dfs -copyFromLocal  PasteYourLocalFileAddress /sample 
+hdfs dfs -cat /sample/vishal.txt
+hdfs dfs -get /sample/vishal.txt   PasteYourLocalFileAddress
+hdfs dfs -cp /sample/vishal.txt  /vishal
+hdfs dfs -mv /sample/vishal.txt  /vishal
+
+Open localhost:9870 in Chrome Browser to See Hadoop Structure Database
