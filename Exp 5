@@ -1,0 +1,12 @@
+mongosh
+use Vishal
+db.createCollection(“Family_tree”)
+db.Family_tree.insertOne({})
+
+db.Family_tree.insertOne({})  //Use this cammand to insert data in Mongodb Database
+
+db.Famiy_tree.find().limit(2)
+db.Famiy_tree.find().skip(2)
+db.Famiy_tree.find().sort({“Name”:1})
+db.Famiy_tree.find().sort({“Name”:-1})
+db.Famiy_tree.createIndex({“Name”:1})
